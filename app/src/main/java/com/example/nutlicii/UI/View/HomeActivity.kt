@@ -1,4 +1,4 @@
-package com.example.nutlici.UI.View
+package com.example.nutlicii.UI.View
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

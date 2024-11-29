@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.nutlicii.R
+import com.example.nutlicii.UI.View.HomeActivity
 import com.google.gson.Gson
 import data.Remote.NutliciiBaseApi
 import data.local.db.AppDatabase

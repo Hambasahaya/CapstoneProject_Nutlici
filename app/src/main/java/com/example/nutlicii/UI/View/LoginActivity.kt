@@ -1,6 +1,5 @@
 package com.example.nutlici.UI.View
 
-
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -9,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.nutlicii.R
+import com.example.nutlicii.UI.View.HomeActivity
 import data.local.db.AppDatabase
 import data.Remote.NutliciiBaseApi
 import data.model.LoginRequest
