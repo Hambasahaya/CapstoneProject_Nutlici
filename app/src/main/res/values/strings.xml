@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Nutlicii</string>
+    <string name="ceklisiimg">ceklis</string>
+    <string name="today_s_goals">Today Goals</string>
+    <string name="graph_icon">graphicon</string>
+    <string name="your_progress">Your Progress</string>
+    <string name="_1350">1350</string>
+    <string name="_91">91%</string>
+    <string name="cardimg">card</string>
+    <string name="_12_october">24 November</string>
+    <string name="sugar">Sugar</string>
+    <string name="g">g</string>
+    <string name="value">24</string>
+    <string name="fatimg">fatimg</string>
+    <string name="fat">Fat</string>
+    <string name="salt">Salt</string>
+    <string name="bmi">BMI</string>
+    <string name="string_today_s_advice">Seimbangkan asupan dengan menambah serat, vitamin, dan mineral dari sayuran, buah, dan biji-bijian. Kurangi lemak jika berasal dari makanan olahan atau gorengan, dan ganti dengan lemak sehat.</string>
+</resources>

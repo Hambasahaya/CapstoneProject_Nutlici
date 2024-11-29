@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
+    android:background="@color/white"
+    android:id="@+id/main"
+    tools:context=".UI.View.MainActivity">
+    <TextView
+        android:id="@+id/tvWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Welcome"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:letterSpacing="0.1"/>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/light_gray">
+
+        <!-- LinearLayout to organize the contents within the CardView -->
+        <LinearLayout
+            android:layout_width="330dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Logo Image -->
+            <ImageView
+                android:id="@+id/ivLogo"
+                android:layout_width="217dp"
+                android:layout_height="215dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/newlogo" />
+
+            <!-- App Name -->
+
+            <!-- App Subtitle with border -->
+            <TextView
+                android:id="@+id/tvAppName"
+                android:layout_width="244dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:letterSpacing="0.1"
+                android:text="Nutrisee App"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:text="See your nutrition track"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:letterSpacing="0.2"/>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Sign In Button with border -->
+    <Button
+        android:id="@+id/btnSign"
+        android:layout_width="321dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/white"
+        android:text="Sign In"
+        android:textColor="@color/black"
+        />
+
+    <Button
+        android:id="@+id/btnSignUp"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/black"
+        android:text="Sign Up"
+        android:textColor="@color/white" />
+
+</LinearLayout>
