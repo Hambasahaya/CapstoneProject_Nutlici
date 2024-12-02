@@ -9,6 +9,7 @@ import data.model.Userdata
 
 @Database(entities = [Userdata::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
+
     abstract fun userDao(): UserDao
 
     companion object {
@@ -20,7 +21,7 @@ abstract class AppDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    "Nutlicii"
+                    "nutlicii_database"
                 ).build()
                 INSTANCE = instance
                 instance

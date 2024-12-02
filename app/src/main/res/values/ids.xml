@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="cameraButton" type="id">camerabtn</item>
-    <item name="galleryButton" type="id">opengalerybtn</item>
-    <item name="imagePreview" type="id">imgeViews</item>
-    <item name="header" type="id">header_ocer</item>
+
+    <item name="imagePreview" type="id" />
+    <item name="cameraButton" type="id" />
 </resources>

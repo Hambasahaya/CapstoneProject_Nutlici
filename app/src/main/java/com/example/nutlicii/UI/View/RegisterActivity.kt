@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.nutlicii.R
 import com.example.nutlicii.UI.View.HomeActivity
+import com.example.nutlicii.data.model.ApiResponse
 import com.google.gson.Gson
 import data.Remote.NutliciiBaseApi
 import data.local.db.AppDatabase
@@ -63,21 +64,18 @@ class RegisterActivity : AppCompatActivity() {
     ) {
         val registerRequest = RegisterRequest(username, password, repeatPassword, name, email)
         val apiService = NutliciiBaseApi.getApiService()
-
-        apiService.register(registerRequest).enqueue(object : Callback<Userdata> {
-            override fun onResponse(call: Call<Userdata>, response: Response<Userdata>) {
-                if (response.isSuccessful) {
-                    val user = response.body()
-                    if (user != null) {
-                        lifecycleScope.launch(Dispatchers.IO) {
-                            appDatabase.userDao().insertUser(user)
-                            val intent = Intent(this@RegisterActivity, HomeActivity::class.java)
-                            intent.putExtra("user_data", user)
-                            startActivity(intent)
-                            finish()
-                        }
-                    } else {
-                        showErrorMessage("Register failed: No user data received")
+        apiService.register(registerRequest).enqueue(object : Callback<ApiResponse<Userdata>> {
+            override fun onResponse(call: Call<ApiResponse<Userdata>>, response: Response<ApiResponse<Userdata>>) {
+                val apiResponse = response.body()
+                val user = apiResponse?.data
+                if (user != null) {
+                    showErrorMessage("Register successful")
+                    lifecycleScope.launch(Dispatchers.IO) {
+                        appDatabase.userDao().insertUser(user)
+                        val intent = Intent(this@RegisterActivity, HomeActivity::class.java)
+                        intent.putExtra("user_data", user)
+                        startActivity(intent)
+                        finish()
                     }
                 } else {
                     val errorBody = response.errorBody()?.string()
@@ -85,13 +83,11 @@ class RegisterActivity : AppCompatActivity() {
                     showErrorMessage("Register failed: $errorMessage")
                 }
             }
-
-            override fun onFailure(call: Call<Userdata>, t: Throwable) {
+            override fun onFailure(call: Call<ApiResponse<Userdata>>, t: Throwable) {
                 showErrorMessage("Register failed: ${t.message}")
             }
         })
     }
-
     private fun showErrorMessage(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
@@ -115,6 +111,6 @@ class RegisterActivity : AppCompatActivity() {
     }
 }
 
-    data class ErrorResponse(
+data class ErrorResponse(
     val errors: String?
 )

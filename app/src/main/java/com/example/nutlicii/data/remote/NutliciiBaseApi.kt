@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object NutliciiBaseApi {
-    private const val BASE_URL = "https://my-nest-app-586910673966.asia-southeast2.run.app/"
+    private const val BASE_URL = "https://register-express-586910673966.asia-southeast2.run.app/"
 
     fun getApiService(): ApiService {
         val client = OkHttpClient.Builder()
@@ -20,7 +20,6 @@ object NutliciiBaseApi {
             .client(client)
             .build()
 
-        // Mengembalikan instance dari ApiService
         return retrofit.create(ApiService::class.java)
     }
 }

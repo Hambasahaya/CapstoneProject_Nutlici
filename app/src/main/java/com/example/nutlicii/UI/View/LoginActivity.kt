@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.nutlicii.R
 import com.example.nutlicii.UI.View.HomeActivity
+import com.example.nutlicii.data.model.ApiResponse
 import data.local.db.AppDatabase
 import data.Remote.NutliciiBaseApi
 import data.model.LoginRequest
@@ -48,13 +49,13 @@ class LoginActivity : AppCompatActivity() {
     private fun sendLoginData(username: String, password: String) {
         val loginRequest = LoginRequest(username, password)
         val apiService = NutliciiBaseApi.getApiService()
-
-        apiService.login(loginRequest).enqueue(object : Callback<Userdata> {
-            override fun onResponse(call: Call<Userdata>, response: Response<Userdata>) {
+        apiService.login(loginRequest).enqueue(object : Callback<ApiResponse<Userdata>> {
+            override fun onResponse(call: Call<ApiResponse<Userdata>>, response: Response<ApiResponse<Userdata>>) {
                 if (response.isSuccessful) {
-                    val user = response.body()
-
+                    val apiResponse = response.body()
+                    val user = apiResponse?.data
                     if (user != null) {
+                        showErrorMessage("Login successful")
                         lifecycleScope.launch(Dispatchers.IO) {
                             appDatabase.userDao().insertUser(user)
                             val intent = Intent(this@LoginActivity, HomeActivity::class.java)
@@ -70,7 +71,7 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<Userdata>, t: Throwable) {
+            override fun onFailure(call: Call<ApiResponse<Userdata>>, t: Throwable) {
                 showErrorMessage("Login failed: ${t.message}")
             }
         })
